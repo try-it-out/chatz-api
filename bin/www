@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+const http = require('http')
+const config = require('config')
+const appInit = require('../app')
+const {
+  initLogger,
+  createErrorHandler,
+  initMongoose
+} = require('chatz-lib')
+
+// Handlers
+const handleUncaught = require('./handlers/uncaught')
+
+// Configs
+const mongoConfig = config.util.toObject(config.get('mongo'))
+const loggerConfig = config.util.toObject(config.get('log'))
+
+async function main () {
+  const logger = initLogger(process.env.NODE_ENV, loggerConfig)
+  const db = await initMongoose(mongoConfig)
+  const errHandler = createErrorHandler({ logger })
+
+  // Init app
+  const app = await appInit({ logger, db, errHandler })
+  const port = config.get('app.port')
+  app.set('port', port)
+  const server = http.createServer(app)
+
+  // Start app
+  server.listen(port, () => logger.info(`Chat started at port: ${port}`))
+
+  // Kill process on Uncaught Exception
+  process.on('uncaughtException', handleUncaught(errHandler))
+
+  // Gracefull shutdown on SIGTERM
+  // TODO:
+  async function shutDown () {
+    logger.info('Shutting down')
+    await db.close()
+    server.close()
+  }
+
+  process.on('SIGTERM', shutDown)
+  process.on('SIGINT', shutDown)
+}
+
+main()

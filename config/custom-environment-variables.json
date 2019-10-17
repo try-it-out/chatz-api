@@ -1,0 +1,9 @@
+{
+  "app": {
+    "port": "APP_PORT",
+    "secret": "APP_SECRET"
+  },
+  "mongo": {
+    "dbUrl": "MONGO_DB_URL"
+  }
+}
