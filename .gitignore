@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+# configs
+config/dev.js
+config/production.js
