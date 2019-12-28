@@ -63,3 +63,9 @@ typings/
 # configs
 config/dev.js
 config/production.js
+
+# clinic
+.clinic
+
+# vim
+*/*.swp
