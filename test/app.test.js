@@ -43,10 +43,10 @@ describe('app', () => {
       .expect(404, done)
   })
 
-  it('No user in session should return 500', (done) => {
+  it('No user in session should return 401', (done) => {
     request
       .get('/api/messages/fetch')
-      .expect(500, done)
+      .expect(401, done)
   })
 
   it('Should send messsage to user if error in controller', (done) => {

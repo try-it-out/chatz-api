@@ -25,12 +25,12 @@ describe('messages - messageFetchCtrl', () => {
   })
 
   it('should fetch messages from DB', (done) => {
-    const username = 'testUser'
-    const session = { username }
+    const name = 'testUser'
+    const user = { name }
     const request = httpMocks.createRequest({
       method: 'GET',
       url: '/api/messages/fetch',
-      session
+      user
     })
 
     const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
@@ -46,12 +46,12 @@ describe('messages - messageFetchCtrl', () => {
   })
 
   it('should skip 1 message when fetching from DB', (done) => {
-    const username = 'testUser'
-    const session = { username }
+    const name = 'testUser'
+    const user = { name }
     const request = httpMocks.createRequest({
       method: 'GET',
       url: '/api/messages/fetch',
-      session,
+      user,
       query: {
         skip: 1
       }
@@ -71,5 +71,24 @@ describe('messages - messageFetchCtrl', () => {
 
   it('should fail if no Model passed to controller', () => {
     expect(messageFetch).to.throw('Message model not defined')
+  })
+
+  it('should fail if no user', (done) => {
+    const request = httpMocks.createRequest({
+      method: 'GET',
+      url: '/api/messages/fetch',
+      query: {
+        skip: 1
+      }
+    })
+
+    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+
+    function onError (err) {
+      expect(err.message).to.equal('Wrong request')
+      done()
+    }
+
+    messageFetch({ model: Message })(request, response, onError)
   })
 })

@@ -15,7 +15,7 @@ module.exports = function saveMessage (options) {
   return async function saveMessageController (req, res, next) {
     try {
       const text = req.body && req.body.text
-      const user = req.session && req.session.username
+      const user = req.user && req.user.name
       if (!text || !user) {
         throw new AppError('Wrong request', true)
       }

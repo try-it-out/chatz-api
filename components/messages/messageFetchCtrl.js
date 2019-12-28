@@ -14,8 +14,7 @@ module.exports = function fetchMessages (options) {
   }
   return async function fetchMessagesController (req, res, next) {
     try {
-      const user = req.session && req.session.username
-      if (!user) {
+      if (!req.user) {
         throw new AppError('Wrong request', true)
       }
       const limit = 25

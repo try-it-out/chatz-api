@@ -1,5 +1,8 @@
+const config = require('config')
+const { createAuthToken } = require('chatz-lib')
 const randomName = require('random-name')
-const { AppError } = require('chatz-lib')
+
+const secret = config.get('app.secret')
 
 /**
  * Login controller.
@@ -7,15 +10,8 @@ const { AppError } = require('chatz-lib')
  */
 module.exports = function login () {
   return function loginController (req, res, next) {
-    if (!req.session) {
-      return next(new AppError('No session defined', true))
-    }
-    let username
-    if (req.session.username) {
-      username = req.session.username
-    } else {
-      username = req.session.username = `${randomName.first()} ${randomName.last()}`
-    }
-    res.send({ username })
+    const name = (req.user && req.user.name) ? req.user.name : `${randomName.first()} ${randomName.last()}`
+    const token = createAuthToken(name, secret)
+    res.send({ token })
   }
 }

@@ -1,14 +1,15 @@
 const setUsername = require('../../components/auth/usernameSetCtrl')
 const httpMocks = require('node-mocks-http')
+const jwt = require('jsonwebtoken')
 
 describe('auth - usernameSetCtrl', () => {
   it('should set new username and send it back', (done) => {
     const testUsername = 'Test Username'
-    const session = {}
+    const user = { name: '123' }
     const request = httpMocks.createRequest({
       method: 'POST',
       url: '/api/username',
-      session,
+      user,
       body: {
         username: testUsername
       }
@@ -16,9 +17,11 @@ describe('auth - usernameSetCtrl', () => {
     const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
 
     response.on('end', function () {
-      const { username } = response._getData()
-      expect(username).to.equal(testUsername)
-      expect(session.username).to.equal(testUsername)
+      const { token } = response._getData()
+      expect(token).to.be.a('string')
+      expect(token.length).to.be.above(0)
+      const payload = jwt.decode(token)
+      expect(payload.name).to.be.equal(testUsername)
       done()
     })
 
@@ -27,17 +30,16 @@ describe('auth - usernameSetCtrl', () => {
 
   it('should fail if no data', (done) => {
     const testUsername = 'Test Username'
-    const session = { username: testUsername }
+    const user = { name: testUsername }
     const request = httpMocks.createRequest({
       method: 'POST',
       url: '/api/username',
-      session,
+      user,
       body: {}
     })
     const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
 
     function onError (err) {
-      expect(err).to.exist
       expect(err.message).to.equal('Bad Request')
       done()
     }
@@ -45,16 +47,16 @@ describe('auth - usernameSetCtrl', () => {
     setUsername({})(request, response, onError)
   })
 
-  it('should fail if no session initiated', (done) => {
+  it('should fail if no user', (done) => {
     const request = httpMocks.createRequest({
       method: 'POST',
-      url: '/api/username'
+      url: '/api/username',
+      body: {}
     })
     const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
 
     function onError (err) {
-      expect(err).to.exist
-      expect(err.message).to.equal('No session defined')
+      expect(err.message).to.equal('Bad Request')
       done()
     }
 

@@ -1,9 +1,7 @@
+const config = require('config')
 const express = require('express')
 const expressWinston = require('express-winston')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
-const config = require('config')
-const { AppError } = require('chatz-lib')
+const { AppError, initPassport } = require('chatz-lib')
 const messageModel = require('../components/messages/messageModel')
 
 // Controllers modules
@@ -32,21 +30,22 @@ async function init (options) {
   const Message = await messageModel(options.db)
   const logger = options.logger
   const errorHandler = options.errHandler
+  const passport = initPassport({ secret: config.get('app.secret') })
+  const authHandler = passport.authenticate('jwt', { session: false })
 
   // Init middlewares
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    next()
+  })
   app.use(expressWinston.logger({ winstonInstance: logger }))
-  app.use(session({
-    secret: config.get('app.secret'),
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: options.db })
-  }))
+  app.use(passport.initialize())
 
   // Init controllers
-  app.get('/api/login', login())
-  app.post('/api/username', setUsername())
-  app.get('/api/messages/fetch', fetchMessages({ model: Message }))
-  app.post('/api/messages/send', saveMessage({ model: Message }))
+  app.post('/api/login', login())
+  app.post('/api/username', authHandler, setUsername())
+  app.get('/api/messages/fetch', authHandler, fetchMessages({ model: Message }))
+  app.post('/api/messages/send', authHandler, saveMessage({ model: Message }))
 
   // 404 handler
   app.use(handleNotFound())

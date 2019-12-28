@@ -1,4 +1,7 @@
-const { AppError } = require('chatz-lib')
+const config = require('config')
+const { AppError, createAuthToken } = require('chatz-lib')
+
+const secret = config.get('app.secret')
 
 /**
  * Controller for setting user's name.
@@ -6,13 +9,11 @@ const { AppError } = require('chatz-lib')
  */
 module.exports = function setUsername () {
   return function setUsernameController (req, res, next) {
-    if (!req.session) {
-      return next(new AppError('No session defined', true))
-    }
     if (!req.body || !req.body.username) {
       return next(new AppError('Bad Request', true, 400))
     }
-    const username = req.session.username = String(req.body.username)
-    res.send({ username })
+    const name = String(req.body.username)
+    const token = createAuthToken(name, secret)
+    res.send({ token })
   }
 }

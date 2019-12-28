@@ -24,11 +24,11 @@ describe('messages - messageSaveCtrl', () => {
   it('should save message to DB', (done) => {
     const username = 'testUser'
     const testText = 'testable text'
-    const session = { username }
+    const user = { name: username }
     const request = httpMocks.createRequest({
       method: 'POST',
       url: '/api/messages/send',
-      session,
+      user,
       body: {
         text: testText
       }
@@ -51,7 +51,7 @@ describe('messages - messageSaveCtrl', () => {
     messageSave({ model: Message })(request, response, (err) => { throw err })
   })
 
-  it('should fail if no user in session', (done) => {
+  it('should fail if no user', (done) => {
     const testText = 'testable text'
     const request = httpMocks.createRequest({
       method: 'POST',
