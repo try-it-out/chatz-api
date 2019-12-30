@@ -9,6 +9,7 @@ extends:
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
+  expect: readonly
 parserOptions:
   ecmaFeatures:
     jsx: true
