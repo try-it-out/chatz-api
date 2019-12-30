@@ -1,0 +1,255 @@
+r2c.eslint:
+  violations:
+    08abf43d278d8f0fe5ad1c18bf71c69a:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/auth.usernameSetCtrl.test.js
+      severity: 2
+      syntactic_context: expect(token).to.be.a('string')
+      tool_id: r2c.eslint
+    1932716dd676b10087e222185bf57dfe:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: expect(err.message).to.equal('Wrong request')
+      tool_id: r2c.eslint
+    1b4dbf2b6ea8380b20b23cd601a3218b:
+      check_id: global-require
+      message: Unexpected require().
+      path: test/components/messages.messageFetchCtrl.test.js
+      severity: 2
+      syntactic_context: 'const response = httpMocks.createResponse({ eventEmitter:
+        require(''events'').EventEmitter })'
+      tool_id: r2c.eslint
+    1f7ec9adc18b451449cfdd40b21cea20:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: expect(result.user).to.equal(username)
+      tool_id: r2c.eslint
+    259d3acb8d94daa3a135edb1361ed4c6:
+      check_id: global-require
+      message: Unexpected require().
+      path: test/components/auth.loginCtrl.test.js
+      severity: 2
+      syntactic_context: 'const response = httpMocks.createResponse({ eventEmitter:
+        require(''events'').EventEmitter })'
+      tool_id: r2c.eslint
+    27241e081969874b10dcaabf59126193:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageFetchCtrl.test.js
+      severity: 2
+      syntactic_context: expect(messageFetch).to.throw('Message model not defined')
+      tool_id: r2c.eslint
+    286681bf3f2d3b6c28ee0a7daa21de89:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/auth.loginCtrl.test.js
+      severity: 2
+      syntactic_context: expect(payload.name).to.be.a('string')
+      tool_id: r2c.eslint
+    2b2095592fd00647ab43139fad4f8558:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/auth.loginCtrl.test.js
+      severity: 2
+      syntactic_context: expect(token).to.be.a('string')
+      tool_id: r2c.eslint
+    326ae25e12d70803b9c7b71a95a75eb5:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/app.test.js
+      severity: 2
+      syntactic_context: expect(err.message).to.equal('Required options not provided')
+      tool_id: r2c.eslint
+    33c23d39d3e1ff21f242aa51be8f3ca0:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/auth.usernameSetCtrl.test.js
+      severity: 2
+      syntactic_context: expect(payload.name).to.be.equal(testUsername)
+      tool_id: r2c.eslint
+    35c776e7261ea75de946852788335ace:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageModel.test.js
+      severity: 2
+      syntactic_context: expect(messageModel).to.throw('Connection not defined')
+      tool_id: r2c.eslint
+    431bfdc1a83adf45dcb23955b042a377:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/auth.loginCtrl.test.js
+      severity: 2
+      syntactic_context: expect(payload.name).to.be.equal(testUsername)
+      tool_id: r2c.eslint
+    47270151781be09b35b2717b452ae444:
+      check_id: import/no-extraneous-dependencies
+      message: '''mongodb-memory-server'' should be listed in the project''s dependencies.
+        Run ''npm i -S mongodb-memory-server'' to add it'
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: const { MongoMemoryServer } = require('mongodb-memory-server')
+      tool_id: r2c.eslint
+    4d88851bd966bf472b98619ea9b2f7bb:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/app.test.js
+      severity: 2
+      syntactic_context: expect(res.body.user.name).to.equal(userName)
+      tool_id: r2c.eslint
+    4dd74a7d89b136cda37e23c6042c1df5:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/auth.loginCtrl.test.js
+      severity: 2
+      syntactic_context: expect(token.length).to.be.above(0)
+      tool_id: r2c.eslint
+    542757e3b98f1eeef9426f76a8574fbb:
+      check_id: global-require
+      message: Unexpected require().
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: 'const response = httpMocks.createResponse({ eventEmitter:
+        require(''events'').EventEmitter })'
+      tool_id: r2c.eslint
+    55fa47ab258be8dc4edec49d8696d148:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: expect(result.text).to.equal(testText)
+      tool_id: r2c.eslint
+    62ae5f126c51ceda5ffcb6ad71a55bfd:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: expect(err).to.be.a('null')
+      tool_id: r2c.eslint
+    70c8d555735aa93a72a2d8ceac21a623:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageFetchCtrl.test.js
+      severity: 2
+      syntactic_context: expect(result).to.be.an('array')
+      tool_id: r2c.eslint
+    72dad595fcda4fdb2f5c08732afe207b:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageFetchCtrl.test.js
+      severity: 2
+      syntactic_context: expect(result.length).to.equal(2)
+      tool_id: r2c.eslint
+    744d3c7aa710dfd8a3930e9eedf1ae33:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageFetchCtrl.test.js
+      severity: 2
+      syntactic_context: expect(err.message).to.equal('Wrong request')
+      tool_id: r2c.eslint
+    7ccafd542f8587e48d054499bf967c2e:
+      check_id: global-require
+      message: Unexpected require().
+      path: test/components/auth.usernameSetCtrl.test.js
+      severity: 2
+      syntactic_context: 'const response = httpMocks.createResponse({ eventEmitter:
+        require(''events'').EventEmitter })'
+      tool_id: r2c.eslint
+    88497df5e2d7962234ea2c2af7a3df76:
+      check_id: import/no-extraneous-dependencies
+      message: '''mongodb-memory-server'' should be listed in the project''s dependencies.
+        Run ''npm i -S mongodb-memory-server'' to add it'
+      path: test/app.test.js
+      severity: 2
+      syntactic_context: const { MongoMemoryServer } = require('mongodb-memory-server')
+      tool_id: r2c.eslint
+    957287a51a079ee9473543de422528b9:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/app.test.js
+      severity: 2
+      syntactic_context: expect(res.body.token).to.be.a('string')
+      tool_id: r2c.eslint
+    95d57569c706761e8b0c64451b80ae9e:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/bin/uncaught.test.js
+      severity: 2
+      syntactic_context: expect(code).to.equal(1)
+      tool_id: r2c.eslint
+    a5aef133925c80e7bded04219f41c8fe:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: expect(message.text).to.equal(testText)
+      tool_id: r2c.eslint
+    b5faa1eb3d75b096f432337e4059d0c5:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageFetchCtrl.test.js
+      severity: 2
+      syntactic_context: expect(result.length).to.equal(1)
+      tool_id: r2c.eslint
+    b66fce8247eb27edfa941e3742eb38ac:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/auth.usernameSetCtrl.test.js
+      severity: 2
+      syntactic_context: expect(err.message).to.equal('Bad Request')
+      tool_id: r2c.eslint
+    b89572d7e3531043bb232a7509bcf58f:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/app.test.js
+      severity: 2
+      syntactic_context: expect(error).to.equal('Something went wrong')
+      tool_id: r2c.eslint
+    d2f90a867d89a6b64f80793920c7c177:
+      check_id: radix
+      message: Missing radix parameter.
+      path: components/messages/messageFetchCtrl.js
+      severity: 2
+      syntactic_context: const skip = parseInt(req.query.skip) || 0
+      tool_id: r2c.eslint
+    d7496acc05da7050914a30ce40c0cc21:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: expect(messageSave).to.throw('Message model not defined')
+      tool_id: r2c.eslint
+    dc81930dd28f7e59da5b3670cf8df600:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/auth.usernameSetCtrl.test.js
+      severity: 2
+      syntactic_context: expect(token.length).to.be.above(0)
+      tool_id: r2c.eslint
+    df743de8d9300d9489e6442b4034c996:
+      check_id: import/no-extraneous-dependencies
+      message: '''mongodb-memory-server'' should be listed in the project''s dependencies.
+        Run ''npm i -S mongodb-memory-server'' to add it'
+      path: test/components/messages.messageFetchCtrl.test.js
+      severity: 2
+      syntactic_context: const { MongoMemoryServer } = require('mongodb-memory-server')
+      tool_id: r2c.eslint
+    e1eadbc3ef1aef6e95f60ebb012dba96:
+      check_id: global-require
+      message: Unexpected require().
+      path: test/app.test.js
+      severity: 2
+      syntactic_context: 'const res = httpMocks.createResponse({ eventEmitter: require(''events'').EventEmitter
+        })'
+      tool_id: r2c.eslint
+    ec33e20acf77acb8766afae428c9a792:
+      check_id: no-undef
+      message: '''expect'' is not defined.'
+      path: test/components/messages.messageSaveCtrl.test.js
+      severity: 2
+      syntactic_context: expect(message.user).to.equal(username)
+      tool_id: r2c.eslint
