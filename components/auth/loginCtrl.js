@@ -10,8 +10,9 @@ const secret = config.get('app.secret')
  */
 module.exports = function login () {
   return function loginController (req, res, next) {
-    const name = (req.user && req.user.name) ? req.user.name : `${randomName.first()} ${randomName.last()}`
+    const name = req.body.userName ? req.body.userName : `${randomName.first()} ${randomName.last()}`
+    const user = { name }
     const token = createAuthToken(name, secret)
-    res.send({ token })
+    res.send({ token, user })
   }
 }

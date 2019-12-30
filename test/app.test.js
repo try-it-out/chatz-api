@@ -49,6 +49,21 @@ describe('app', () => {
       .expect(401, done)
   })
 
+  it('Should send token with existing username', (done) => {
+    const userName = 'test123'
+    request
+      .post('/api/login')
+      .send({ userName })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(res => {
+        expect(res.body.user.name).to.equal(userName)
+        expect(res.body.token).to.be.a('string')
+        done()
+      })
+  })
+
   it('Should send messsage to user if error in controller', (done) => {
     const err = new Error('Test error')
 

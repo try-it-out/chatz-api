@@ -1,6 +1,8 @@
 const config = require('config')
 const express = require('express')
 const expressWinston = require('express-winston')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 const { AppError, initPassport } = require('chatz-lib')
 const messageModel = require('../components/messages/messageModel')
 
@@ -34,12 +36,10 @@ async function init (options) {
   const authHandler = passport.authenticate('jwt', { session: false })
 
   // Init middlewares
-  app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    next()
-  })
+  app.use(cors())
   app.use(expressWinston.logger({ winstonInstance: logger }))
   app.use(passport.initialize())
+  app.use(bodyParser.json())
 
   // Init controllers
   app.post('/api/login', login())
