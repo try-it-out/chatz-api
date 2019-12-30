@@ -18,7 +18,7 @@ module.exports = function fetchMessages (options) {
         throw new AppError('Wrong request', true)
       }
       const limit = 25
-      const skip = parseInt(req.query.skip) || 0
+      const skip = parseInt(req.query.skip, 10) || 0
       const sort = { date: -1 }
       const result = await Message.find({}, null, { sort, limit, skip })
       return res.send({ result })

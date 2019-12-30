@@ -8,6 +8,7 @@ const {
   initMongoose
 } = require('chatz-lib')
 const { MongoMemoryServer } = require('mongodb-memory-server')
+const { EventEmitter } = require('events')
 
 describe('app', () => {
   let app, server, request, db, mongod
@@ -76,7 +77,7 @@ describe('app', () => {
       url: '/test/endpoint'
     })
 
-    const res = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const res = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     res.on('end', () => {
       const { error } = res._getData()

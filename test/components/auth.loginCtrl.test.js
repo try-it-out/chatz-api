@@ -1,11 +1,12 @@
 const login = require('../../components/auth/loginCtrl')
 const httpMocks = require('node-mocks-http')
 const jwt = require('jsonwebtoken')
+const { EventEmitter } = require('events')
 
 describe('auth - loginCtrl', () => {
   it('should send new token', (done) => {
     const request = httpMocks.createRequest({ method: 'POST', url: '/login' })
-    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     response.on('end', function () {
       const { token } = response._getData()
@@ -23,7 +24,7 @@ describe('auth - loginCtrl', () => {
     const testUsername = 'Test User'
     const body = { userName: testUsername }
     const request = httpMocks.createRequest({ method: 'POST', url: '/login', body })
-    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     response.on('end', function () {
       const { token } = response._getData()

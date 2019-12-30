@@ -3,6 +3,7 @@ const messageModel = require('../../components/messages/messageModel')
 const httpMocks = require('node-mocks-http')
 const { initMongoose } = require('chatz-lib')
 const { MongoMemoryServer } = require('mongodb-memory-server')
+const { EventEmitter } = require('events')
 
 describe('messages - messageFetchCtrl', () => {
   let Message, connection, mongod
@@ -33,7 +34,7 @@ describe('messages - messageFetchCtrl', () => {
       user
     })
 
-    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     response.on('end', () => {
       const { result } = response._getData()
@@ -57,7 +58,7 @@ describe('messages - messageFetchCtrl', () => {
       }
     })
 
-    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     response.on('end', () => {
       const { result } = response._getData()
@@ -82,7 +83,7 @@ describe('messages - messageFetchCtrl', () => {
       }
     })
 
-    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     function onError (err) {
       expect(err.message).to.equal('Wrong request')

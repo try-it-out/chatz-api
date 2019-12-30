@@ -1,6 +1,7 @@
 const setUsername = require('../../components/auth/usernameSetCtrl')
 const httpMocks = require('node-mocks-http')
 const jwt = require('jsonwebtoken')
+const { EventEmitter } = require('events')
 
 describe('auth - usernameSetCtrl', () => {
   it('should set new username and send it back', (done) => {
@@ -14,7 +15,7 @@ describe('auth - usernameSetCtrl', () => {
         username: testUsername
       }
     })
-    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     response.on('end', function () {
       const { token } = response._getData()
@@ -37,7 +38,7 @@ describe('auth - usernameSetCtrl', () => {
       user,
       body: {}
     })
-    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     function onError (err) {
       expect(err.message).to.equal('Bad Request')
@@ -53,7 +54,7 @@ describe('auth - usernameSetCtrl', () => {
       url: '/api/username',
       body: {}
     })
-    const response = httpMocks.createResponse({ eventEmitter: require('events').EventEmitter })
+    const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
     function onError (err) {
       expect(err.message).to.equal('Bad Request')
