@@ -51,15 +51,15 @@ describe('app', () => {
   })
 
   it('Should send token with existing username', (done) => {
-    const userName = 'test123'
+    const username = 'test123'
     request
       .post('/api/login')
-      .send({ userName })
+      .send({ username })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
-        expect(res.body.user.name).to.equal(userName)
+        expect(res.body.user.name).to.equal(username)
         expect(res.body.token).to.be.a('string')
         done()
       })

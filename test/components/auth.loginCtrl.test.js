@@ -22,7 +22,7 @@ describe('auth - loginCtrl', () => {
 
   it('should send token with existing username', (done) => {
     const testUsername = 'Test User'
-    const body = { userName: testUsername }
+    const body = { username: testUsername }
     const request = httpMocks.createRequest({ method: 'POST', url: '/login', body })
     const response = httpMocks.createResponse({ eventEmitter: EventEmitter })
 
