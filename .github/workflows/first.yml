@@ -15,5 +15,5 @@ jobs:
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ..
+          name: ..&#x2f;..&#x2f;..&#x2f;cake
           path: /tmp/pwn.txt
