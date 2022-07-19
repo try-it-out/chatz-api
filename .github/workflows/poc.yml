@@ -20,6 +20,6 @@ jobs:
       - name: Download artifacts
         uses: dawidd6/action-download-artifact@v2
         with:
-          workflow: poc.yml
+          workflow: first.yml
       - name: Lets see
         run: ls /cake
