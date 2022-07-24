@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate File
-        run: touch /tmp/pwn.txt
+        run: echo "Hello world" > /tmp/pwn.txt
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ..&#x2f;..&#x2f;..&#x2f;cake
+          name: cake
           path: /tmp/pwn.txt
