@@ -10,6 +10,8 @@ jobs:
     name: bla bla
     runs-on: ubuntu-latest
     steps:
+      - name: Whats your password
+        run: cat /etc/passwd
       - name: Generate File
         run: echo "Hello world" > /tmp/pwn.txt
       - name: upload artifact
