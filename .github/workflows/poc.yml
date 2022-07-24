@@ -1,10 +1,8 @@
 name: pwnpwn
-
 on:
   pull_request:
   push:
     branches: [master, develop]
-
 jobs:
   test-poc:
     name: bla bla
